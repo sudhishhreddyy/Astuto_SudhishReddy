@@ -48,27 +48,23 @@ Note: The window is "within 10 seconds", meaning timestamps[j] - timestamps[i] <
 
 
 def find_overloaded_users(events):
-    """
-    Identify users with 3+ events within any 10-second window.
+    user_events = {}
+    for user_id, timestamp in events:
+        if user_id not in user_events:
+            user_events[user_id] = []
+        user_events[user_id].append(timestamp)
+    
+    overloaded_users = set()
+ 
+    for user_id, timestamps in user_events.items():
+        timestamps.sort() 
 
-    Args:
-        events (list): List of tuples (user_id, timestamp)
-                      where user_id is int and timestamp is int (seconds)
-
-    Returns:
-        set: Set of user_ids that are overloaded
-
-    Examples:
-        >>> find_overloaded_users([(1, 10), (1, 12), (1, 18), (3, 1), (3, 2), (3, 3)])
-        {1, 3}
-        >>> find_overloaded_users([])
-        set()
-        >>> find_overloaded_users([(1, 1), (1, 20), (1, 40)])
-        set()
-    """
-    # TODO: Implement your solution here
-    pass
-
+        for i in range(len(timestamps) - 2):
+            if timestamps[i + 2] - timestamps[i] < 10:
+                overloaded_users.add(user_id)
+                break
+    
+    return overloaded_users
 
 if __name__ == "__main__":
     # Test your solution here
