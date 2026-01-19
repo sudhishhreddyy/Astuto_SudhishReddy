@@ -30,29 +30,12 @@ Explanation:
 
 
 def first_stable_character(s):
-    """
-    Find the first stable character in the string.
-
-    A character is stable if:
-    1. It appears at least twice
-    2. All occurrences are in one continuous group
-
-    Args:
-        s (str): Input string
-
-    Returns:
-        str or None: First stable character, or None if no stable character exists
-
-    Examples:
-        >>> first_stable_character("abccba")
-        'c'
-        >>> first_stable_character("abc")
-        None
-        >>> first_stable_character("a")
-        None
-    """
-    # TODO: Implement your solution here
-    pass
+    n = len(s)
+    if n < 2:
+        return ("None")
+    
+    for i in range (n):
+        if 
 
 
 if __name__ == "__main__":

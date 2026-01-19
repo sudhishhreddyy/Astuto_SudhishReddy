@@ -44,29 +44,13 @@ Input: []  → Output: 0
 
 
 def compressed_stack_length(lst):
-    """
-    Calculate the number of elements remaining after cancellations.
-
-    Process the list from left to right. When a number matches the most recent
-    active number, both are removed. Otherwise, the number is added.
-
-    Args:
-        lst (list): List of integers
-
-    Returns:
-        int: Count of numbers remaining after all cancellations
-
-    Examples:
-        >>> compressed_stack_length([1, 2, 2, 3])
-        2
-        >>> compressed_stack_length([4, 4, 4, 4])
-        0
-        >>> compressed_stack_length([])
-        0
-    """
-    # TODO: Implement your solution here
-    pass
-
+    stack = []
+    for num in lst:
+        if stack and stack[-1] == num:
+            stack.pop()
+        else:
+            stack.append(num)
+    return len(stack)
 
 if __name__ == "__main__":
     # Test your solution here
