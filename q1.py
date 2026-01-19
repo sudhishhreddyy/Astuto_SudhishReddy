@@ -42,9 +42,13 @@ def first_stable_character(s):
         last_pos[char] = i
 
     for i, char in enumerate(s):
-        if first_pos[char] != last_pos[char] and first_pos[char] == i:
-            return char
-    
+                if (
+            first_pos[char] != last_pos[char] and
+            first_pos[char] == i and
+            s[first_pos[char]: last_pos[char] + 1] == char * (last_pos[char] - first_pos[char] + 1)
+        ):
+                     return char
+                     
     return None
 
 if __name__ == "__main__":
