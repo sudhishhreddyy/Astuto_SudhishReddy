@@ -28,15 +28,24 @@ Explanation:
   twice)
 """
 
-
 def first_stable_character(s):
-    n = len(s)
-    if n < 2:
-        return ("None")
-    
-    for i in range (n):
-        if 
 
+    if not s:
+        return None
+
+    first_pos = {}
+    last_pos = {}
+    
+    for i, char in enumerate(s):
+        if char not in first_pos:
+            first_pos[char] = i
+        last_pos[char] = i
+
+    for i, char in enumerate(s):
+        if first_pos[char] != last_pos[char] and first_pos[char] == i:
+            return char
+    
+    return None
 
 if __name__ == "__main__":
     # Test your solution here
